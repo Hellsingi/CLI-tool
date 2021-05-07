@@ -1,7 +1,5 @@
+const { DECODE_ACTION, ENCODE_ACTION } = require("./constants");
 const exitProcess = require("./exitProcess");
-
-const DECODE = "decode";
-const ENCODE = "encode";
 
 function validateArgs(shift, actionType) {
   let error;
@@ -9,9 +7,8 @@ function validateArgs(shift, actionType) {
     error = "The shift value must be an integer!";
   }
 
-  if (actionType !== DECODE && actionType !== ENCODE)
-    error =
-      "Please enter the required valid action argument ( decode/encode )!";
+  if (actionType !== DECODE_ACTION && actionType !== ENCODE_ACTION)
+    error = `Please enter the required valid action argument ( ${DECODE_ACTION}/${ENCODE_ACTION} )!`;
 
   if (error) exitProcess(error, 1);
 

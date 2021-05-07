@@ -1,0 +1,21 @@
+const DECODE_ACTION = "decode";
+const ENCODE_ACTION = "encode";
+
+const UPPER_CASE_LOWER_BOUND = "A".charCodeAt(0);
+
+const UPPER_CASE_UPPER_BOUND = "Z".charCodeAt(0);
+
+const LOWER_CASE_LOWER_BOUND = "a".charCodeAt(0);
+const LOWER_CASE_UPPER_BOUND = "z".charCodeAt(0);
+
+const LETTERS_IN_ALPHABET = 26;
+
+module.exports = {
+  DECODE_ACTION,
+  ENCODE_ACTION,
+  UPPER_CASE_LOWER_BOUND,
+  UPPER_CASE_UPPER_BOUND,
+  LOWER_CASE_LOWER_BOUND,
+  LOWER_CASE_UPPER_BOUND,
+  LETTERS_IN_ALPHABET,
+};
