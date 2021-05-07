@@ -1,7 +1,10 @@
 const fs = require("fs");
 const path = require("path");
+const stream = require("stream");
+
 const exitProcess = require("./exitProcess");
 const isPathCorrect = require("./validatePath");
+const { ENCODE_ACTION } = require("./constants");
 
 const readStreamFunc = (input) => {
   return input
@@ -21,7 +24,25 @@ const writeStreamFunc = (output) => {
     : process.stdout;
 };
 
+class transformStream extends stream.Transform {
+  constructor(func, action, shift) {
+    super();
+    this.func = func;
+    this.shift = this._combine(action, shift);
+  }
+
+  _combine(action, shift) {
+    return action === ENCODE_ACTION ? +shift : -shift;
+  }
+
+  _transform(data, encoding, callback) {
+    this.push(this.func(data.toString(), this.shift));
+    callback();
+  }
+}
+
 module.exports = {
   readStreamFunc,
   writeStreamFunc,
+  transformStream,
 };
