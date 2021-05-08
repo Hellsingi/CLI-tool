@@ -1,4 +1,3 @@
-
 # Caesar cipher CLI tool
 
 ## About
